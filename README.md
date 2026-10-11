@@ -10,6 +10,7 @@ My learning journey through Python OOP, from classes and objects to practical de
 | 02 | [Attributes](class-object/02_attributes.py) | `__init__`, instance attributes, object state |
 | 03 | [Instance methods](class-object/03_instance_methods.py) | Reading and changing state, manually assigned attributes |
 | 04 | [Credit card](class-object/04_credit.py) | A practical class, `__str__`, `__repr__` |
+| 05 | [Student course management](class-object/05_Student.py) | Default arguments, per-instance course lists, duplicate-course checks, `__str__`, `__repr__` |
 
 These are learning examples, not production-ready implementations. Lesson 03 deliberately accesses an attribute before assigning it and currently stops with `AttributeError`. Lesson 04 does not yet enforce its credit limit.
 
@@ -24,6 +25,7 @@ python class-object/01_class_and_object.py
 python class-object/02_attributes.py
 python class-object/03_instance_methods.py
 python class-object/04_credit.py
+python class-object/05_Student.py
 ```
 
 Run each command separately. The error in lesson 03 is an example to study; the remaining code in that file will run only after handling or moving that access.
@@ -40,7 +42,8 @@ python-oop/
 |   |-- 01_class_and_object.py
 |   |-- 02_attributes.py
 |   |-- 03_instance_methods.py
-|   `-- 04_credit_card.py
+|   |-- 04_credit_card.py
+|   `-- 05_Student.py
 |-- 02_dunder_methods/
 |-- 03_inheritance/
 `-- 04_association_and_encapsulation/
@@ -52,6 +55,7 @@ The credit-card lesson includes basic string dunder methods but will stay with t
 
 - [x] Write initial examples of classes, attributes, and instance methods.
 - [x] Write a basic credit-card example with string representations.
+- [x] Write a Student class with a default age, a course list, and duplicate-course checks.
 - [ ] Handle the deliberate missing-attribute error so lesson 03 runs to completion.
 - [ ] Correct the lesson 02 comment: the updated dictionary contains `Vivek Pandey`, `23`, and `MCA`.
 - [ ] Validate credit-card charges and payments, enforce the limit, and define overpayment behavior.
