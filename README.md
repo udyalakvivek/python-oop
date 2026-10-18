@@ -1,7 +1,8 @@
 # Python Object-Oriented Programming
 
 My learning journey through Python OOP, from classes and objects to practical design and production practices. This repository is a work in progress, with explanations in English and Hindi written in Roman script.
-
+### Connect with me
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?logo=github)](https://github.com/udyalakvivek)
 ## Current lessons
 
 | Lesson | File | Concepts |
