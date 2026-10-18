@@ -26,3 +26,18 @@ obj3 = Person()
 
 obj4 = obj3  # obj4 is now referencing the same object as obj3
 print(obj3 is obj4)  # True
+
+
+class Car:
+    def __init__(self,brand, model):
+        self.brand = brand
+        self.model = model
+    def full_name(self):
+        return f"Brand : {self.brand} and Model: is {self.model}"
+result = Car("Toyota","Corolla")
+print(result.brand)
+print(result.model)
+
+my_new_car = Car("TATA","Safari")
+print(my_new_car.model)
+print(my_new_car.full_name())

@@ -1,3 +1,8 @@
+"""
+Encapsulation in Python means combining data and methods inside a class and controlling access to that data. We can use double underscores (__) to make attributes private-style and provide access through methods such as getters and setters.
+"""
+
+
 class BankAccount:
     def __init__(self, owner, balance):
         self.owner = owner            # Public attribute
@@ -34,49 +39,40 @@ account.deposit(-50)          # Output: Invalid deposit amount!
 
 
 #===================================================================
-#do not use now this is for when we start learning about inheritance
+class Car:
+    def __init__(self,brand,model):
+        self.brand = brand
+        self.__model = model # __ use for make private
 
-class BankAccount:
-    def __init__(self, owner, balance, account_type):
-        self.owner = owner                 # Public attribute
-        self.__balance = balance           # Private attribute
-        self._account_type = account_type  # Protected attribute (prefixed with a single _)
+    def full_name(self):
+        return f"Brand : {self.brand} and Model: is {self.__model}"
 
-    # Getter method: Safely read private data
-    def get_balance(self):
-        return self.__balance
+    def get_model(self):
+        return self.__model + "!"
 
-    # Setter method: Safely modify private data with validation logic
-    def deposit(self, amount):
-        if amount > 0:
-            self.__balance += amount
-            print(f"Deposited ${amount}. New balance: ${self.__balance}")
-        else:
-            print("Invalid deposit amount!")
+    # Setter
+    def set_model(self, model):
+        self.__model = model
 
-# Creating a subclass to demonstrate "Protected" behavior in inheritance
-class SavingsAccount(BankAccount):
-    def display_account_info(self):
-        # Subclasses can freely access protected attributes
-        print(f"Account Owner: {self.owner}")
-        print(f"Account Type: {self._account_type}")
+class Electric_car(Car):
+    def __init__(self,brand , model,battery_size):
+        super().__init__(brand,model)
+        self.battery_size = battery_size
 
-        # Subclasses CANNOT directly access private attributes
-        # print(self.__balance) # This would raise an AttributeError
 
-# ---- Using the Classes ----
+res = Car("TATA","Safari")
+print(res.brand)
+print(res.get_model())
 
-# Initialize the subclass
-savings_acc = SavingsAccount("Alice", 1000, "High-Yield Savings")
 
-# 1. Accessing Public Data
-print(savings_acc.owner)  # Output: Alice
+#setter example
+car = Car("TATA", "Safari")
+print(car.get_model())  # Safari
+car.set_model("Punch")
+print(car.get_model())  # Punch
 
-# 2. Accessing Protected Data via a subclass method
-savings_acc.display_account_info()
-# Output:
-# Account Owner: Alice
-# Account Type: High-Yield Savings
 
-# 3. Accessing Protected Data externally (Technically allowed, but discouraged)
-print(savings_acc._account_type)  # Output: High-Yield Savings
+
+my_electric_car = Electric_car("TATA","Punch", "85KW")
+print(my_electric_car.get_model())
+print(my_electric_car.full_name())

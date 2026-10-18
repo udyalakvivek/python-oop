@@ -29,3 +29,25 @@ print(emp.get_details())
 dev = Developer("Alice", 95000, "Python")
 print(dev.get_details())
 # Output: Developer: Alice, Language: Python, Salary: $95000
+
+
+
+
+#clean and simple example 
+class Car:
+    def __init__(self,brand, model):
+        self.brand = brand
+        self.model = model
+    def full_name(self):
+        return f"Brand : {self.brand} and Model: is {self.model}"
+
+class Electric_car(Car):
+    def __init__(self,brand , model,battery_size):
+        super().__init__(brand,model)
+        self.battery_size = battery_size
+
+
+
+my_electric_car = Electric_car("TATA","Punch", "85KW")
+print(my_electric_car.model)
+print(my_electric_car.full_name())
