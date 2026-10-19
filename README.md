@@ -14,7 +14,8 @@ My learning journey through Python OOP, from classes and objects to practical de
 | 05 | [Student course management](class-object/05_Student.py) | Default arguments, per-instance course lists, duplicate-course checks, `__str__`, `__repr__` |
 | 06 | [Encapsulation](class-object/06_encapsulation.py) | Bank-account balance access and deposit validation, name-mangled `__model`, car getter and setter methods, inherited methods |
 | 07 | [Polymorphism](class-object/07_polymorphism.py) | Overriding `fuel_type()` in `Electric_car`, shared `Car.total_car` class variable, counting parent and child instances |
-| 08 | [Static methods](class-object/08_static_method.py) | Empty placeholder; implementation planned |
+| 08 | [Static methods](class-object/08_static_method.py) | `@staticmethod`, calling `general_des()` through a class or instance without `self` or `cls` |
+| 09 | [Class methods and properties](class-object/09_class_method.py) | Class counters, `@classmethod`, resetting shared state with `cls`, a read-only `@property` |
 
 ### Inheritance lessons
 
@@ -28,7 +29,7 @@ My learning journey through Python OOP, from classes and objects to practical de
 
 The notification examples print or return simulated messages; they do not contact SMS or email services. In Python, a single leading underscore marks an internal-use convention, while double leading underscores trigger name mangling rather than enforcing access restrictions. The encapsulation lesson demonstrates a `BankAccount`, followed by a `Car` with a getter and setter and an `Electric_car` subclass. Its `get_model()` method appends `!` to the stored model name.
 
-These are learning examples, not production-ready implementations. Lesson 03 deliberately accesses an attribute before assigning it and currently stops with `AttributeError`. Lesson 04 does not yet enforce its credit limit.
+These are learning examples, not production-ready implementations. Lesson 03 deliberately accesses an attribute before assigning it and currently stops with `AttributeError`. Lesson 04 does not yet enforce its credit limit. Lesson 09 demonstrates a read-only `model` property: assigning `res.model = "Safari"` raises `AttributeError` because no setter is defined, so the subsequent print statements do not run.
 
 ## Run a lesson
 
@@ -44,6 +45,8 @@ python class-object/04_credit.py
 python class-object/05_Student.py
 python class-object/06_encapsulation.py
 python class-object/07_polymorphism.py
+python class-object/08_static_method.py
+python class-object/09_class_method.py
 python Inheritance/01_base.py
 python Inheritance/02_single.py
 python Inheritance/03_multilevel.py
@@ -51,7 +54,17 @@ python Inheritance/04_hierarchical_inheritance.py
 python Inheritance/05_multiple_inheritance.py
 ```
 
-Run each command separately. The error in lesson 03 is an example to study; the remaining code in that file will run only after handling or moving that access. Lesson 08 is currently empty and produces no output.
+Run each command separately. The errors in lessons 03 and 09 are examples to study; the remaining code in each file will run only after handling or moving the failing access or assignment. Lesson 08 prints the same general car description twice, once through an instance and once through the class.
+
+## Instance, static, and class methods
+
+| Method type | First parameter | Use in these lessons |
+| --- | --- | --- |
+| Instance method | `self` | Read an individual car's brand and model with `full_name()` |
+| Static method | No automatic first parameter | Return a general description with `Car.general_des()` |
+| Class method | `cls` | Reset the class counter with `Car.reset_count()` |
+
+A property exposes a method through attribute-style access. In lesson 09, `res.model` reads the private model value through its getter. Updating that property requires a setter; `@property` alone does not make every attribute on the object read-only.
 
 ## Planned topic structure
 
@@ -69,7 +82,8 @@ python-oop/
 |   |-- 05_Student.py
 |   |-- 06_encapsulation.py
 |   |-- 07_polymorphism.py
-|   `-- 08_static_method.py
+|   |-- 08_static_method.py
+|   `-- 09_class_method.py
 |-- 02_dunder_methods/
 |-- 03_inheritance/
 `-- 04_association_and_encapsulation/
@@ -85,7 +99,9 @@ The credit-card lesson includes basic string dunder methods but will stay with t
 - [x] Add encapsulation examples with controlled balance access and deposit validation.
 - [x] Add basic, single, multilevel, hierarchical, and multiple inheritance examples, including `super()` and method overriding.
 - [x] Add car examples of polymorphism, getter and setter methods, and a shared instance counter.
-- [ ] Implement the static-method lesson in `class-object/08_static_method.py`.
+- [x] Add a static-method example callable through both a class and an instance.
+- [x] Add a class-method example that resets a shared counter and a read-only property example.
+- [ ] Handle the deliberate read-only property assignment so lesson 09 runs to completion.
 - [ ] Handle the deliberate missing-attribute error so lesson 03 runs to completion.
 - [ ] Correct the lesson 02 comment: the updated dictionary contains `Vivek Kumar`, `26`, and `MCA`.
 - [ ] Validate credit-card charges and payments, enforce the limit, and define overpayment behavior.
