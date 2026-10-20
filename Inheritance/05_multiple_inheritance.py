@@ -34,3 +34,28 @@ secure_corp = SecureCorporateEmail("Internal_Exchange_Server")
 print(secure_corp.dispatch_secure_payload("ceo@company.com", "Q4_Profit_Report.pdf"))
 # Console Prints: [AUDIT LOG REGISTERED]: Confidential file sent to ceo@company.com
 # Returns: Email sent via Internal_Exchange_Server to ceo@company.com: Encrypted Data: Q4_Profit_Report.pdf
+
+
+# Car example :
+
+class Car:
+    def __init__(self, brand,model):
+        self.brand = brand
+        self.model = model
+
+class Battery:
+    def battery_info(self):
+        return "This is Battery info!"
+
+class Engine:
+    def engine_info(self):
+        return "This is engine info!"
+
+
+
+class ElectricCarTwo(Car,Battery,Engine):
+    pass
+
+obj1 = ElectricCarTwo("Tata","Punch")
+print(obj1.battery_info())
+print(obj1.engine_info())

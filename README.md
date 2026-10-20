@@ -25,7 +25,7 @@ My learning journey through Python OOP, from classes and objects to practical de
 | 02 | [Single inheritance](Inheritance/02_single.py) | Notification channel and SMS subclass, inherited state, public/protected/private attribute conventions |
 | 03 | [Multilevel inheritance](Inheritance/03_multilevel.py) | Three-level class hierarchy, chained constructors, promotional SMS example |
 | 04 | [Hierarchical inheritance](Inheritance/04_hierarchical_inheritance.py) | SMS and email subclasses sharing a parent, subclass-specific attributes and methods |
-| 05 | [Multiple inheritance](Inheritance/05_multiple_inheritance.py) | Combining email delivery and audit logging, explicit initialization of both parent classes |
+| 05 | [Multiple inheritance](Inheritance/05_multiple_inheritance.py) | Combining email delivery and audit logging, explicit initialization of both parent classes, inheriting from `Car`, `Battery`, and `Engine` |
 
 The notification examples print or return simulated messages; they do not contact SMS or email services. In Python, a single leading underscore marks an internal-use convention, while double leading underscores trigger name mangling rather than enforcing access restrictions. The encapsulation lesson demonstrates a `BankAccount`, followed by a `Car` with a getter and setter and an `Electric_car` subclass. Its `get_model()` method appends `!` to the stored model name.
 
@@ -66,6 +66,22 @@ Run each command separately. The errors in lessons 03 and 09 are examples to stu
 
 A property exposes a method through attribute-style access. In lesson 09, `res.model` reads the private model value through its getter. Updating that property requires a setter; `@property` alone does not make every attribute on the object read-only.
 
+## Multiple inheritance
+
+[Inheritance lesson 05](Inheritance/05_multiple_inheritance.py) contains two examples:
+
+- `SecureCorporateEmail(EmailChannel, AuditLogger)` explicitly initializes both parents, then combines simulated email delivery with an audit log.
+- `ElectricCarTwo(Car, Battery, Engine)` inherits the `Car` constructor and the `battery_info()` and `engine_info()` methods. The subclass uses `pass` because it adds no behavior of its own.
+
+In the car example, `ElectricCarTwo("Tata", "Punch")` stores the brand and model through `Car.__init__`. The two method calls print:
+
+```text
+This is Battery info!
+This is engine info!
+```
+
+Python searches inherited methods using the method resolution order (MRO). For this example, the order is `ElectricCarTwo`, `Car`, `Battery`, `Engine`, then `object`. You can inspect it with `ElectricCarTwo.__mro__`.
+
 ## Planned topic structure
 
 Current lessons live in `class-object/` and `Inheritance/`. I plan to organize the examples into four topic folders with simple, numbered folder names. The following is a proposed layout; files have not yet been moved:
@@ -98,6 +114,7 @@ The credit-card lesson includes basic string dunder methods but will stay with t
 - [x] Write a Student class with a default age, a course list, and duplicate-course checks.
 - [x] Add encapsulation examples with controlled balance access and deposit validation.
 - [x] Add basic, single, multilevel, hierarchical, and multiple inheritance examples, including `super()` and method overriding.
+- [x] Combine `Car`, `Battery`, and `Engine` in a multiple-inheritance example with an inherited constructor and methods.
 - [x] Add car examples of polymorphism, getter and setter methods, and a shared instance counter.
 - [x] Add a static-method example callable through both a class and an instance.
 - [x] Add a class-method example that resets a shared counter and a read-only property example.
@@ -106,7 +123,7 @@ The credit-card lesson includes basic string dunder methods but will stay with t
 - [ ] Correct the lesson 02 comment: the updated dictionary contains `Vivek Kumar`, `26`, and `MCA`.
 - [ ] Validate credit-card charges and payments, enforce the limit, and define overpayment behavior.
 - [ ] Study operator overloading and expand the polymorphism examples.
-- [ ] Study abstract classes and method resolution order.
+- [ ] Study abstract classes and explore method resolution order with overlapping methods and cooperative `super()` calls.
 - [ ] Study composition and aggregation.
 - [ ] Build a small project using type hints, clear exceptions, and separated demonstration code.
 - [ ] Add tests for valid inputs, invalid inputs, and boundary cases; introduce formatting and CI.
