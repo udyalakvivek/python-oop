@@ -13,9 +13,10 @@ My learning journey through Python OOP, from classes and objects to practical de
 | 04 | [Credit card](class-object/04_credit.py) | A practical class, `__str__`, `__repr__` |
 | 05 | [Student course management](class-object/05_Student.py) | Default arguments, per-instance course lists, duplicate-course checks, `__str__`, `__repr__` |
 | 06 | [Encapsulation](class-object/06_encapsulation.py) | Bank-account balance access and deposit validation, name-mangled `__model`, car getter and setter methods, inherited methods |
-| 07 | [Polymorphism](class-object/07_polymorphism.py) | Overriding `fuel_type()` in `Electric_car`, shared `Car.total_car` class variable, counting parent and child instances |
+| 07 | [Polymorphism](class-object/07_polymorphism.py) | Overriding `fuel_type()` in `Electric_car`, a shared instance counter, flexible multiplication arguments, animal method overriding |
 | 08 | [Static methods](class-object/08_static_method.py) | `@staticmethod`, calling `general_des()` through a class or instance without `self` or `cls` |
 | 09 | [Class methods and properties](class-object/09_class_method.py) | Class counters, `@classmethod`, resetting shared state with `cls`, a read-only `@property` |
+| 10 | [Constructors](class-object/10_Constructors%20.py) | Object creation with `__new__`, initialization with `__init__`, returning `None` or an instance of another class |
 
 ### Inheritance lessons
 
@@ -47,6 +48,7 @@ python class-object/06_encapsulation.py
 python class-object/07_polymorphism.py
 python class-object/08_static_method.py
 python class-object/09_class_method.py
+python "class-object/10_Constructors .py"
 python Inheritance/01_base.py
 python Inheritance/02_single.py
 python Inheritance/03_multilevel.py
@@ -65,6 +67,22 @@ Run each command separately. The errors in lessons 03 and 09 are examples to stu
 | Class method | `cls` | Reset the class counter with `Car.reset_count()` |
 
 A property exposes a method through attribute-style access. In lesson 09, `res.model` reads the private model value through its getter. Updating that property requires a setter; `@property` alone does not make every attribute on the object read-only.
+
+## Polymorphism
+
+[Lesson 07](class-object/07_polymorphism.py) demonstrates a shared method name with different behavior: `Car` and `Electric_car` implement `fuel_type()`, while `Dog`, `Cat`, and `Animal` implement `sound()`. Calling `sound()` in a loop prints `Bark`, `Meow`, and `Some generic sound` according to the object's class.
+
+The `Calculator.multiply(a=1, b=1, *args)` example accepts different numbers of arguments. Its four calls return `1`, `4`, `6`, and `24`. Although the lesson's comment calls this compile-time polymorphism, Python uses one method with default and variable-length arguments here to mimic overloading; it does not select among separate method definitions by argument signature.
+
+## Object creation and initialization
+
+[Lesson 10](class-object/10_Constructors%20.py) separates the roles of `__new__` and `__init__`:
+
+- `__new__` creates and returns an object; `__init__` initializes it when the returned object is an instance of the requested class.
+- If `__new__` returns `None`, initialization is skipped. One example returns `None` implicitly, and another does so when the name is empty.
+- If `Person.__new__` returns an `Animal`, `Person.__init__` is skipped and printing the result uses `Animal.__str__`.
+
+The filename currently contains a space before `.py`, so quote its path when running it.
 
 ## Multiple inheritance
 
@@ -99,7 +117,8 @@ python-oop/
 |   |-- 06_encapsulation.py
 |   |-- 07_polymorphism.py
 |   |-- 08_static_method.py
-|   `-- 09_class_method.py
+|   |-- 09_class_method.py
+|   `-- 10_Constructors .py
 |-- 02_dunder_methods/
 |-- 03_inheritance/
 `-- 04_association_and_encapsulation/
@@ -118,11 +137,13 @@ The credit-card lesson includes basic string dunder methods but will stay with t
 - [x] Add car examples of polymorphism, getter and setter methods, and a shared instance counter.
 - [x] Add a static-method example callable through both a class and an instance.
 - [x] Add a class-method example that resets a shared counter and a read-only property example.
+- [x] Expand polymorphism with flexible multiplication arguments and an animal method-overriding example.
+- [x] Demonstrate object creation and initialization with `__new__` and `__init__`, including skipped initialization.
 - [ ] Handle the deliberate read-only property assignment so lesson 09 runs to completion.
 - [ ] Handle the deliberate missing-attribute error so lesson 03 runs to completion.
 - [ ] Correct the lesson 02 comment: the updated dictionary contains `Vivek Kumar`, `26`, and `MCA`.
 - [ ] Validate credit-card charges and payments, enforce the limit, and define overpayment behavior.
-- [ ] Study operator overloading and expand the polymorphism examples.
+- [ ] Study operator overloading.
 - [ ] Study abstract classes and explore method resolution order with overlapping methods and cooperative `super()` calls.
 - [ ] Study composition and aggregation.
 - [ ] Build a small project using type hints, clear exceptions, and separated demonstration code.

@@ -1,3 +1,7 @@
+"""
+Polymorphism means "many forms" and allows the same method, function or operator to behave differently depending on the object or data it works with. This flexibility helps create more reusable, maintainable and scalable code.
+"""
+
 class Car:
     def __init__(self,brand,model):
         self.brand = brand
@@ -31,7 +35,7 @@ print(my_electric_car.full_name())
 print(my_electric_car.fuel_type())
 
 
-# hanlde a counter of all cars in same example 
+# hanlde a counter of all cars in same example
 
 class Car:
     total_car = 0 #creat a class variable
@@ -58,5 +62,35 @@ class Electric_car(Car):
 res = Car("TATA","Safari")
 Car("Hello","hi")
 my_electric_car = Electric_car("TATA","Punch", "85KW")
-print(Car.total_car) #
+print(Car.total_car)
 
+
+#type of Polymorphism
+#1 Compile time Polymorphism means method overloading
+class Calculator:
+    def multiply(self ,a = 1,b = 1,*args):
+        result = a*b
+        for num in args:
+            result = result * num
+        return result
+
+calc = Calculator()
+print(calc.multiply())
+print(calc.multiply(4))
+print(calc.multiply(2, 3))
+print(calc.multiply(2, 3, 4))
+
+#2 Run time Polymorphism Mrthod overridding
+class Animal:
+    def sound(self):
+        return "Some generic sound"
+class Dog(Animal):
+    def sound(self):
+        return "Bark"
+class Cat(Animal):
+    def sound(self):
+        return "Meow"
+
+animals = [Dog(), Cat(), Animal()]
+for animal in animals:
+    print(animal.sound())
