@@ -13,7 +13,7 @@ My learning journey through Python OOP, from classes and objects to practical de
 | 04 | [Credit card](class-object/04_credit.py) | A practical class, `__str__`, `__repr__` |
 | 05 | [Student course management](class-object/05_Student.py) | Default arguments, per-instance course lists, duplicate-course checks, `__str__`, `__repr__` |
 | 06 | [Encapsulation](class-object/06_encapsulation.py) | Bank-account balance access and deposit validation, name-mangled `__model`, car getter and setter methods, inherited methods |
-| 07 | [Polymorphism](class-object/07_polymorphism.py) | Overriding `fuel_type()` in `Electric_car`, a shared instance counter, flexible multiplication arguments, animal method overriding |
+| 07 | [Polymorphism](class-object/07_polymorphism.py) | Payment-system analogy, overriding `fuel_type()` in `Electric_car`, a shared instance counter, flexible multiplication arguments, animal method overriding |
 | 08 | [Static methods](class-object/08_static_method.py) | `@staticmethod`, calling `general_des()` through a class or instance without `self` or `cls` |
 | 09 | [Class methods and properties](class-object/09_class_method.py) | Class counters, `@classmethod`, resetting shared state with `cls`, a read-only `@property` |
 | 10 | [Constructors](class-object/10_Constructors%20.py) | Object creation with `__new__`, initialization with `__init__`, returning `None` or an instance of another class |
@@ -69,6 +69,8 @@ Run each command separately. The errors in lessons 03 and 09 are examples to stu
 A property exposes a method through attribute-style access. In lesson 09, `res.model` reads the private model value through its getter. Updating that property requires a setter; `@property` alone does not make every attribute on the object read-only.
 
 ## Polymorphism
+
+The lesson introduces polymorphism with an online-payment analogy: credit cards, UPI, wallets, and net banking can expose the same `processPayment()` method while each payment type supplies its own behavior. This is a conceptual example in the lesson notes; the executable examples use cars, a calculator, and animals.
 
 [Lesson 07](class-object/07_polymorphism.py) demonstrates a shared method name with different behavior: `Car` and `Electric_car` implement `fuel_type()`, while `Dog`, `Cat`, and `Animal` implement `sound()`. Calling `sound()` in a loop prints `Bark`, `Meow`, and `Some generic sound` according to the object's class.
 

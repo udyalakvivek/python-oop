@@ -1,5 +1,11 @@
 """
 Polymorphism means "many forms" and allows the same method, function or operator to behave differently depending on the object or data it works with. This flexibility helps create more reusable, maintainable and scalable code.
+
+Real-Life Example:
+
+In an online payment system, different payment methods such as Credit Card, UPI, Wallet and NetBanking all use the same processPayment() method.
+The method name remains the same, but each payment type performs its own specific payment process.
+
 """
 
 class Car:
