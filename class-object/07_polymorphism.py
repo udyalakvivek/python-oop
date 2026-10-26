@@ -100,3 +100,53 @@ class Cat(Animal):
 animals = [Dog(), Cat(), Animal()]
 for animal in animals:
     print(animal.sound())
+
+
+"""
+    Polymorphism refers to the ability of the same method or operation to behave differently based on object or context. 
+    It mainly includes compile-time and runtime polymorphism
+In compile time :
+    Compile-time polymorphism allows multiple methods with the same name but different parameters, with the appropriate method selected before execution. 
+    While languages like Java and C++ support this through method overloading
+    example in python :
+    class Calculator:
+    def multiply(self, a=1, b=1, *args):
+        result = a * b
+        for num in args:
+            result *= num
+        return result
+
+    calc = Calculator()
+    print(calc.multiply())            
+    print(calc.multiply(4))  
+    print(calc.multiply(2, 3))       
+    print(calc.multiply(2, 3, 4))
+In Run time:
+    Runtime polymorphism means that the behavior of a method is decided while program is running, 
+    based on the object calling it
+    #example in python:
+    class Animal:
+        def sound(self):
+            return "Some generic sound"
+
+    class Dog(Animal):
+        def sound(self):
+            return "Bark"
+    
+    class Cat(Animal):
+        def sound(self):
+            return "Meow"
+    
+    animals = [Dog(), Cat(), Animal()]
+    for animal in animals:
+        print(animal.sound())
+    #result
+    Bark
+    Meow
+    Some generic sound
+
+    Explanation: 
+        Here, sound method behaves differently depending on whether object is a Dog, Cat or Animal and this decision happens at runtime. 
+        This dynamic nature makes Python particularly powerful for runtime polymorphism.
+
+    """
