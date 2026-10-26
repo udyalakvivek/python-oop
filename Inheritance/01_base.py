@@ -51,3 +51,30 @@ class Electric_car(Car):
 my_electric_car = Electric_car("TATA","Punch", "85KW")
 print(my_electric_car.model)
 print(my_electric_car.full_name())
+
+
+# Parent Class: Animal
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def info(self):
+        print("Animal name:", self.name)
+
+# Child Class: Dog
+class Dog(Animal):
+    def __init__(self, name, breed):
+        # Calls constructor based on MRO
+        super().__init__(name)
+        self.breed = breed
+
+    def details(self):
+        print(self.name, "is a", self.breed)
+
+d = Dog("Buddy", "Golden Retriever")
+d.info()      # Parent method
+d.details()   # Child method
+
+
+# super() function is used inside __init__() method of Dog to call the constructor of Animal and initialize inherited attribute (name).
+# This ensures that parent class functionality is reused without needing to rewrite the code in the child class
