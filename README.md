@@ -17,6 +17,7 @@ My learning journey through Python OOP, from classes and objects to practical de
 | 08 | [Static methods](class-object/08_static_method.py) | `@staticmethod`, calling `general_des()` through a class or instance without `self` or `cls` |
 | 09 | [Class methods and properties](class-object/09_class_method.py) | Class counters, `@classmethod`, resetting shared state with `cls`, a read-only `@property` |
 | 10 | [Constructors](class-object/10_Constructors%20.py) | Object creation with `__new__`, initialization with `__init__`, returning `None` or an instance of another class |
+| 11 | [Abstraction](class-object/11_Abstraction.py) | Abstract base classes with `ABC` and `@abstractmethod`, requiring payment subclasses to implement `pay()` |
 
 ### Inheritance lessons
 
@@ -49,6 +50,7 @@ python class-object/07_polymorphism.py
 python class-object/08_static_method.py
 python class-object/09_class_method.py
 python "class-object/10_Constructors .py"
+python -X utf8 class-object/11_Abstraction.py
 python Inheritance/01_base.py
 python Inheritance/02_single.py
 python Inheritance/03_multilevel.py
@@ -86,6 +88,10 @@ The `Calculator.multiply(a=1, b=1, *args)` example accepts different numbers of 
 
 The filename currently contains a space before `.py`, so quote its path when running it.
 
+## Abstraction
+
+[Lesson 11](class-object/11_Abstraction.py) first shows ordinary inheritance: `UpiPayment` and `CardPayment` inherit `Payment.pay()` and therefore use the same implementation. It then defines `Payment` as an abstract base class with `ABC` and marks `pay()` with `@abstractmethod`. Each concrete payment subclass must implement its own `pay()` method, so UPI and card payments can provide distinct behavior. The examples print simulated payment messages; they do not process real transactions.
+
 ## Multiple inheritance
 
 [Inheritance lesson 05](Inheritance/05_multiple_inheritance.py) contains two examples:
@@ -121,6 +127,7 @@ python-oop/
 |   |-- 08_static_method.py
 |   |-- 09_class_method.py
 |   `-- 10_Constructors .py
+
 |-- 02_dunder_methods/
 |-- 03_inheritance/
 `-- 04_association_and_encapsulation/
@@ -141,12 +148,13 @@ The credit-card lesson includes basic string dunder methods but will stay with t
 - [x] Add a class-method example that resets a shared counter and a read-only property example.
 - [x] Expand polymorphism with flexible multiplication arguments and an animal method-overriding example.
 - [x] Demonstrate object creation and initialization with `__new__` and `__init__`, including skipped initialization.
+- [x] Demonstrate abstraction with an abstract `Payment` base class and concrete UPI and card implementations.
 - [ ] Handle the deliberate read-only property assignment so lesson 09 runs to completion.
 - [ ] Handle the deliberate missing-attribute error so lesson 03 runs to completion.
 - [ ] Correct the lesson 02 comment: the updated dictionary contains `Vivek Kumar`, `26`, and `MCA`.
 - [ ] Validate credit-card charges and payments, enforce the limit, and define overpayment behavior.
 - [ ] Study operator overloading.
-- [ ] Study abstract classes and explore method resolution order with overlapping methods and cooperative `super()` calls.
+- [ ] Explore method resolution order with overlapping methods and cooperative `super()` calls.
 - [ ] Study composition and aggregation.
 - [ ] Build a small project using type hints, clear exceptions, and separated demonstration code.
 - [ ] Add tests for valid inputs, invalid inputs, and boundary cases; introduce formatting and CI.
