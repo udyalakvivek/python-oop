@@ -1,9 +1,30 @@
-# Python Object-Oriented Programming
+# Python Fundamentals and Object-Oriented Programming
 
-My learning journey through Python OOP, from classes and objects to practical design and production practices. This repository is a work in progress, with explanations in English and Hindi written in Roman script.
+My Python learning notebook: lists, strings, classes, objects, and inheritance. The examples include comments, expected outputs, and explanations in English and Hindi written in Roman script. Each topic is meant to be read, run, and changed while practicing.
 ### Connect with me
 [GitHub](https://github.com/udyalakvivek)
-## Current lessons
+## List and string notebooks
+
+Start with the Markdown notes for explanations, then run the matching Python file to follow the examples.
+
+| Topic | Notes | Runnable examples | What is covered |
+| --- | --- | --- | --- |
+| Lists | [List notebook](List/List.md) | [Basics.py](List/Basics.py) | All 11 public list methods; add, update, and delete at the start, end, or any position; indexing, slicing, shallow/deep copying, nested lists, common mistakes, and time complexity |
+| Strings | [String notebook](String/String.md) | [basics.py](String/basics.py) | All 47 public string methods in Python 3.12; quotes, escapes, indexing, slicing, immutability, text editing, formatting, Unicode, encoding, and practice exercises |
+
+The list file has 20 sequential sections. The string file has 21 separate topic functions, grouped into foundations, methods, and practice. Each string topic can also run independently. Both notebooks explain what happens behind the scenes and include deliberately caught errors so the examples can finish running.
+
+```powershell
+python List/Basics.py
+python String/basics.py
+
+# Run just one string topic from the repository root:
+python -c "from String.basics import demo_slicing; demo_slicing()"
+```
+
+The string examples display values with quotes and escaped whitespace, making spaces, tabs, and newlines easier to inspect. The notes include the reference links used for the topic outline and technical details.
+
+## Classes and objects
 
 | Lesson | File | Concepts |
 | --- | --- | --- |
@@ -108,35 +129,30 @@ This is engine info!
 
 Python searches inherited methods using the method resolution order (MRO). For this example, the order is `ElectricCarTwo`, `Car`, `Battery`, `Engine`, then `object`. You can inspect it with `ElectricCarTwo.__mro__`.
 
-## Planned topic structure
+## Repository structure
 
-Current lessons live in `class-object/` and `Inheritance/`. I plan to organize the examples into four topic folders with simple, numbered folder names. The following is a proposed layout; files have not yet been moved:
+Current folders and their purpose:
 
 ```text
 python-oop/
 |-- README.md
 |-- .gitignore
-|-- 01_classes_and_objects/
-|   |-- 01_class_and_object.py
-|   |-- 02_attributes.py
-|   |-- 03_instance_methods.py
-|   |-- 04_credit_card.py
-|   |-- 05_Student.py
-|   |-- 06_encapsulation.py
-|   |-- 07_polymorphism.py
-|   |-- 08_static_method.py
-|   |-- 09_class_method.py
-|   `-- 10_Constructors .py
-
-|-- 02_dunder_methods/
-|-- 03_inheritance/
-`-- 04_association_and_encapsulation/
+|-- List/
+|   |-- List.md
+|   `-- Basics.py
+|-- String/
+|   |-- String.md
+|   `-- basics.py
+|-- class-object/                 # 11 lessons: classes through abstraction
+`-- Inheritance/                  # 5 lessons: basic through multiple inheritance
 ```
 
-The credit-card lesson includes basic string dunder methods but will stay with the introductory class examples. Later dunder lessons will cover operator overloading. Future folders will be added when their first lessons are ready; Git does not track empty folders.
+Filename casing matters on case-sensitive systems: the list example is `List/Basics.py`, while the string example is `String/basics.py`. Future topic folders will be added when their first lessons are ready.
 
 ## Learning roadmap
 
+- [x] Add a list notebook with all 11 public methods, positional edits, copying, and behind-the-scenes explanations.
+- [x] Add a string notebook with all 47 public methods, separate topic functions, Unicode, and practice exercises.
 - [x] Write initial examples of classes, attributes, and instance methods.
 - [x] Write a basic credit-card example with string representations.
 - [x] Write a Student class with a default age, a course list, and duplicate-course checks.
@@ -161,40 +177,16 @@ The credit-card lesson includes basic string dunder methods but will stay with t
 
 For a future money-handling project, use integer minor units or `decimal.Decimal` rather than floating-point balances. Keep all card numbers in examples fictional.
 
-## First push to GitHub
+## Saving new lessons
 
-Create an empty repository named `python-oop` in your own GitHub account. Do not initialize it on GitHub with a README, `.gitignore`, or license because this folder already contains the first two files.
-
-In PowerShell, run:
+This repository is hosted at [udyalakvivek/python-oop](https://github.com/udyalakvivek/python-oop) on the `main` branch. After updating a lesson, run its examples and update this README if the topic list has changed. Review the staged files before committing:
 
 ```powershell
-Set-Location X:\Python-Opps
-git init -b main
 git add .
 git status
 git diff --cached
-git commit -m "Add initial Python OOP lessons and documentation"
-git remote add origin https://github.com/YOUR_USERNAME/python-oop.git
-git remote -v
-git push -u origin main
+git commit -m "Add notes and examples for a new Python topic"
+git push origin main
 ```
 
-Replace `YOUR_USERNAME` with your GitHub username. Review the staged files before committing. If Git requests your identity, set it for this repository and retry the commit:
-
-```powershell
-git config user.name "Your Name"
-git config user.email "Your GitHub verified or noreply email"
-```
-
-Complete GitHub authentication if prompted during the push. The reference repository uses `master`; this project can use `main` with the same folder structure.
-
-For later lessons:
-
-```powershell
-git add .
-git diff --cached
-git commit -m "Add lesson on inheritance"
-git push
-```
-
-See [GitHub's official guide for pushing local code](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github).
+Python bytecode, virtual environments, and local credentials are excluded through `.gitignore`.
