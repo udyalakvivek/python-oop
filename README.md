@@ -24,6 +24,22 @@ python -c "from String.basics import demo_slicing; demo_slicing()"
 
 The string examples display values with quotes and escaped whitespace, making spaces, tabs, and newlines easier to inspect. The notes include the reference links used for the topic outline and technical details.
 
+### List practice problems
+
+| Problem | File | Approach |
+| --- | --- | --- |
+| Contains duplicate | [Contain_duplicate.py](List/Contain_duplicate.py) | Dictionary lookup to detect repeated values; average O(n) time and O(n) space |
+| Two Sum | [Two_Sum1.py](List/Two_Sum1.py) | Returns zero-based indices using brute force (O(n²) time) or a dictionary (average O(n) time, O(n) space) |
+| Two Sum with sorted input | [Two_Sum2.py](List/Two_Sum2.py) | Two dictionary-based variants returning one-based indices; average O(n) time and O(n) space |
+
+The Two Sum methods return an empty list when no pair is found. Run the examples from the repository root:
+
+```powershell
+python -X utf8 List/Contain_duplicate.py
+python -X utf8 List/Two_Sum1.py
+python -X utf8 List/Two_Sum2.py
+```
+
 ## Classes and objects
 
 | Lesson | File | Concepts |
@@ -139,7 +155,10 @@ python-oop/
 |-- .gitignore
 |-- List/
 |   |-- List.md
-|   `-- Basics.py
+|   |-- Basics.py
+|   |-- Contain_duplicate.py
+|   |-- Two_Sum1.py
+|   `-- Two_Sum2.py
 |-- String/
 |   |-- String.md
 |   `-- basics.py
